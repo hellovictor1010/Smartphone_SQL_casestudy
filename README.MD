@@ -1,58 +1,102 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="content-language" content="en">
-    <meta http-equiv="content-script-type" content="text/javascript">
-    <meta http-equiv="content-style-type" content="text/css">
-    <meta name="description" content="This is the online markdown editor with live preview.">
 
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.10.1">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <title>Markdown Live Preview</title>
-    <script type="module" crossorigin src="/assets/index-DXVBtf7Z.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C-vOJggO.css">
-  </head>
+# 📱 Smartphones SQL Case Study  
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-77C1GEG9C8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+## 📖 Project Overview  
+This project is a **SQL-based case study on smartphones dataset**.  
+The goal is to analyze **smartphone brands, models, pricing, RAM, storage, and market insights** using SQL queries.  
 
-    gtag('config', 'G-77C1GEG9C8');
-  </script>
+Through this case study, I explored how SQL can be used to extract **meaningful business insights** from raw data.  
 
-  <body>
+---
 
-    <header>
-        <div id="menu-items">
-            <div><a href="/">Markdown Live Preview</a></div>
-            <div id="reset-button"><a href="#">Reset</a></div>
-            <div id="copy-button"><a href="#">Copy</a></div>
-            <div id="sync-button"><input type="checkbox" id="sync-scroll-checkbox"><label for="sync-scroll-checkbox">Sync scroll</label></div>
-        </div>
-        <div id="github"><a href="https://github.com/tanabe/markdown-live-preview"><img src="image/GitHub-Mark-Light-32px.webp"></a></div>
-    </header>
+## 🛠️ Tech Stack  
+- **Database:** MySQL  
+- **Tools:** MySQL Workbench / SQL Server / PostgreSQL (any RDBMS works)  
+- **Dataset:** Custom Smartphones Dataset (Brand, Model, Price, RAM, Storage, Battery, etc.)  
 
-    <div id="container" class="split-container">
+---
 
-        <div id="edit" class="column editor-pane">
-            <div id="editor-wrapper">
-                <div id="editor"></div>
-            </div>
-        </div>
+## 🔑 Key Queries & Insights  
 
-        <div id="split-divider" class="split-divider"></div>
+### 1️⃣ Data Exploration  
+```sql
+SELECT * FROM smartphones LIMIT 10;
+````
 
-        <div id="preview" class="column preview-pane">
-            <div id="preview-wrapper">
-                <div id="output" class="content markdown-body"></div>
-            </div>
-        </div>
-    </div>
+➡️ Get a quick overview of the dataset.
 
-    <footer></footer>
-  </body>
-</html>
+### 2️⃣ Top 5 Smartphones with Highest RAM & Storage
+
+```sql
+SELECT brand, model, ram_gb, storage_gb 
+FROM smartphones 
+ORDER BY ram_gb DESC, storage_gb DESC 
+LIMIT 5;
+```
+
+📊 **Insight:** Shows the most powerful smartphones.
+
+### 3️⃣ Average Price by Brand
+
+```sql
+SELECT brand, AVG(price) AS avg_price 
+FROM smartphones 
+GROUP BY brand 
+ORDER BY avg_price DESC;
+```
+
+💡 **Insight:** Identifies premium vs budget-friendly brands.
+
+### 4️⃣ Most Affordable 5G Smartphones
+
+```sql
+SELECT brand, model, price 
+FROM smartphones 
+WHERE network = '5G' 
+ORDER BY price ASC 
+LIMIT 5;
+```
+
+📱 **Insight:** Highlights budget 5G options.
+
+### 5️⃣ Count of Models by Each Brand
+
+```sql
+SELECT brand, COUNT(model) AS total_models 
+FROM smartphones 
+GROUP BY brand 
+ORDER BY total_models DESC;
+```
+
+📊 **Insight:** Reveals the most diverse product line-up.
+
+---
+
+## 📈 Business Use Cases
+
+✔️ Helps customers compare smartphones before buying
+✔️ Assists retailers in **identifying top-selling specs & price ranges**
+✔️ Useful for analysts to study **brand positioning & market trends**
+
+---
+
+## ✨ Key Learnings
+
+* Writing **SQL queries for real-world scenarios**
+* Using **aggregation, filtering, ordering, and subqueries**
+* Transforming **raw smartphone data into actionable insights**
+
+---
+
+## 🚀 Future Scope
+
+* Create **interactive dashboards** (Excel / Power BI / Tableau)
+* Apply **Window Functions & CTEs** for deeper analysis
+* Expand dataset with **customer reviews & sales data**
+
+---
+
+## 📌 Author
+
+👤 **Piyush Singh**
+💼 Aspiring **Data Analyst** | SQL | Excel | Power BI | Tableau
